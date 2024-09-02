@@ -4,7 +4,7 @@
 
 # Comentario API
 
-Nuestra aplicacion permite gestionar usuario y comentarios en una plataforma, incluyendo la creación, modificiacion, eliminación, y la capacidad de agregar o eliminar reacciones a los comentarios.
+Nuestra aplicacion permite gestionar usuarios y comentarios en una plataforma, incluyendo la creación, modificiacion, eliminación, y la capacidad de agregar o eliminar reacciones a los comentarios.
 
 ## Requisitos
 
