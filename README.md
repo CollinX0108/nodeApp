@@ -118,3 +118,6 @@ Esas son algunas de las maneras en las que se puede probar.
 
 1. **Reacciones**: Para eliminar reacciones, usamos el tipo de datos `Mixed` en el esquema de mongoose para manejar la flexibilidad en los datos. Esto fue necesario porque teniamos problemas con la definición estricta del esquema para arreglos de objetos.
 2. **Autorización**: Los endpoints necesitan siempre estar logeado y que tenga el rol adecuado para realizar estas acciones.
+
+---
+

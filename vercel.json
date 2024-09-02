@@ -9,16 +9,20 @@
             "src/**/*.ts",
             "package.json",
             "tsconfig.json"
-          ],
-          "zeroConfig": true
+          ]
         }
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/src/index.ts"
+        "dest": "/dist/index.js"
       }
-    ]
-  }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "MONGODB_URI": "@mongodb-uri",
+      "JWT_SECRET": "@jwt-secret"
+    }
+}
   
