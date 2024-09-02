@@ -121,4 +121,9 @@ Esas son algunas de las maneras en las que se puede probar.
 
 ---
 
+### Despliegue en Vercel
+
+El proyecto está desplegado en Vercel y está disponible en el siguiente enlace: [https://node-app-gamma-rust.vercel.app/](https://node-app-gamma-rust.vercel.app/). Debido a que el proyecto no incluye una interfaz de usuario (frontend) y está configurado solo para el backend, el enlace puede descargar archivos en lugar de mostrar una página web. Esto es esperado y no afecta la funcionalidad del backend. 
+
+Para verificar la funcionalidad del backend, puedes usar herramientas como Postman para interactuar con las rutas API descritas en este README.
 
