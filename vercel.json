@@ -1,6 +1,6 @@
 {
   "builds": [{
-    "src": "dist/index.js",
+    "src": "src/index.js",
     "use": "@vercel/node",
     "config": {
       "distDir": "dist"
