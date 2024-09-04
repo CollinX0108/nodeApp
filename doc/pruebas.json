@@ -1,0 +1,533 @@
+{
+	"info": {
+		"_postman_id": "",
+		"name": "nodeApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": ""
+	},
+	"item": [
+		{
+			"name": "userLogin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQwNzkyNywiZXhwIjoxNzI1NDA4MjI3fQ.9i7_nMYNcP1GKB_7BX91GnruOJKVSxwikh6oELdUlRM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"superadmin@example.com\",\n    \"password\": \"prueba1234567\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/users/login",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userRegister",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxNzg3NCwiZXhwIjoxNzI1NDE4MTc0fQ.n4kZFF67b2Wo7gpmdOhoA6UtrHtr4YFGi0l02sRtem8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"New User5\",\n    \"email\": \"newuser5@example.com\",\n    \"password\": \"newpassword1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/users/register",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usetGetAll",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxNzg3NCwiZXhwIjoxNzI1NDE4MTc0fQ.n4kZFF67b2Wo7gpmdOhoA6UtrHtr4YFGi0l02sRtem8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/users/",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userEdit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxNzg3NCwiZXhwIjoxNzI1NDE4MTc0fQ.n4kZFF67b2Wo7gpmdOhoA6UtrHtr4YFGi0l02sRtem8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"NuevoNombre5\",\n  \"email\": \"nuevoemail5@example.com\",\n  \"password\": \"nuevacontraseña5\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/users/66d7c9ab9b50716251ac8069",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users",
+						"66d7c9ab9b50716251ac8069"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "userDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxNzg3NCwiZXhwIjoxNzI1NDE4MTc0fQ.n4kZFF67b2Wo7gpmdOhoA6UtrHtr4YFGi0l02sRtem8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/users/66d637eefe84d9f300c3407c",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users",
+						"66d637eefe84d9f300c3407c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentCreate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODI4NSwiZXhwIjoxNzI1NDE4NTg1fQ.ad8gQXY7Gg-CyGZEybD5dEzqEkmlefGSqSLAQW-n8SY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"Este es un comentario de prueba user superadmin vercel(sin padre).\",\n    \"parentId\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/create",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentGet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODI4NSwiZXhwIjoxNzI1NDE4NTg1fQ.ad8gQXY7Gg-CyGZEybD5dEzqEkmlefGSqSLAQW-n8SY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/66d7cb399b50716251ac806f",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"66d7cb399b50716251ac806f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentAnswer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODI4NSwiZXhwIjoxNzI1NDE4NTg1fQ.ad8gQXY7Gg-CyGZEybD5dEzqEkmlefGSqSLAQW-n8SY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"Esta es la primera respuesta al comentario que se guarda en el padre.\",\n    \"parentId\": \"66d7cb399b50716251ac806f\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/create",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentGetAnswers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODI4NSwiZXhwIjoxNzI1NDE4NTg1fQ.ad8gQXY7Gg-CyGZEybD5dEzqEkmlefGSqSLAQW-n8SY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/66d7cb399b50716251ac806f",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"66d7cb399b50716251ac806f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentCreateToDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODYyMiwiZXhwIjoxNzI1NDE4OTIyfQ.KnjLRdaC1Wo39Ql42qy-47PP6zgQ5_GGeZHrWhRVEOw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"Este es un comentario de prueba para ser eliminado.\",\n    \"parentId\": null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/create",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODYyMiwiZXhwIjoxNzI1NDE4OTIyfQ.KnjLRdaC1Wo39Ql42qy-47PP6zgQ5_GGeZHrWhRVEOw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/66d7cc899b50716251ac8079",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"66d7cc899b50716251ac8079"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentReact",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODYyMiwiZXhwIjoxNzI1NDE4OTIyfQ.KnjLRdaC1Wo39Ql42qy-47PP6zgQ5_GGeZHrWhRVEOw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reactionType\": \"me gusta\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/66d7cb399b50716251ac806f/react",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"66d7cb399b50716251ac806f",
+						"react"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "commentReactToDelete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODYyMiwiZXhwIjoxNzI1NDE4OTIyfQ.KnjLRdaC1Wo39Ql42qy-47PP6zgQ5_GGeZHrWhRVEOw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reactionType\": \"me gusta\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/66d7cb399b50716251ac806f/react",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"66d7cb399b50716251ac806f",
+						"react"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteReaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjZkNjExZDU0N2FiOGI2ZTE0ZTA2MTNmIiwiZW1haWwiOiJzdXBlcmFkbWluQGV4YW1wbGUuY29tIiwibmFtZSI6IlN1cGVyQWRtaW4iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTcyNTQxODk2NSwiZXhwIjoxNzI1NDE5MjY1fQ.1jf88U0MB_PFO6LNAcqVAf4papEBz9-1PsIkue_7djE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://node-leh54q5cy-collins-projects-45b819a1.vercel.app/api/comments/66d7cb399b50716251ac806f/Dreaction",
+					"protocol": "https",
+					"host": [
+						"node-leh54q5cy-collins-projects-45b819a1",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"comments",
+						"66d7cb399b50716251ac806f",
+						"Dreaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -8,7 +8,7 @@ Nuestra aplicacion permite gestionar usuarios y comentarios en una plataforma, i
 
 ## Requisitos
 
-Para utilizar esta API, se necesita tener un usuario con rol de **superadmin**. Aqui tienes un ejemplo para iniciar sesión con el siguiente endpoint:
+Para utilizar esta API, se necesita tener un usuario con rol de **superadmin**. Aqui tienes un ejemplo(aunque en el archivo pruebas.json estan todas las posibilidades, se prueba con superadmin porque puede hacer todo, pero las restricciones se pueden probar con usuarios regulares) para iniciar sesión con el siguiente endpoint:
 
 ### Inicio de Sesión
 
@@ -29,7 +29,7 @@ Para utilizar esta API, se necesita tener un usuario con rol de **superadmin**. 
 }
 ```
 
-Guarda el token que recibirás, ya que es necesario para autenticarte en los siguientes endpoints.
+Se guarda el token que recibe, ya que es necesario para autenticarte en los siguientes endpoints.
 
 ## Endpoints
 
@@ -118,12 +118,12 @@ Esas son algunas de las maneras en las que se puede probar.
 
 1. **Reacciones**: Para eliminar reacciones, usamos el tipo de datos `Mixed` en el esquema de mongoose para manejar la flexibilidad en los datos. Esto fue necesario porque teniamos problemas con la definición estricta del esquema para arreglos de objetos.
 2. **Autorización**: Los endpoints necesitan siempre estar logeado y que tenga el rol adecuado para realizar estas acciones.
+3. **pruebas.json**: En este archivo estan todas las pruebas en postman, lo unico que cambiaria seria el token, por lo que si o si se debe iniciar sesion como superadmin tal como se indica en el primer paso para poder seguir con todas las funcionalidades, el token puede que expire despues de un tiempo, se tiene que volver a iniciar sesion y cambiarlo.
 
 ---
 
 ### Despliegue en Vercel
 
-El proyecto está desplegado en Vercel y está disponible en el siguiente enlace: [https://node-app-gamma-rust.vercel.app/](https://node-app-gamma-rust.vercel.app/). Debido a que el proyecto no incluye una interfaz de usuario (frontend) y está configurado solo para el backend, el enlace puede descargar archivos en lugar de mostrar una página web. Esto es esperado y no afecta la funcionalidad del backend. 
+El proyecto está desplegado en Vercel y está disponible en el siguiente enlace: [https://node-leh54q5cy-collins-projects-45b819a1.vercel.app](https://node-leh54q5cy-collins-projects-45b819a1.vercel.app). Debido a que el proyecto no incluye una interfaz de usuario (frontend) y está configurado solo para el backend, el enlace muestra el mensaje "Hello World". 
 
 Para verificar la funcionalidad del backend, puedes usar herramientas como Postman para interactuar con las rutas API descritas en este README.
-
