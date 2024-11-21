@@ -2,14 +2,18 @@ FROM node:18
 
 WORKDIR /app
 
-# Copiar solo el package.json primero
+# Copiar package.json y package-lock.json
 COPY Server/package*.json ./
 
-# Instalar dependencias
-RUN npm install
+# Instalar todas las dependencias, incluyendo devDependencies
+RUN npm install --production=false
 
-# Copiar el resto del código de Server
+# Copiar el resto del código
 COPY Server/ .
+
+# Instalar type-graphql y otras dependencias necesarias explícitamente
+RUN npm install --save-dev typescript @types/node
+RUN npm install type-graphql reflect-metadata @apollo/server graphql class-validator
 
 # Compilar TypeScript
 RUN npm run build
