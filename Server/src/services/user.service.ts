@@ -10,14 +10,31 @@ import jwt from "jsonwebtoken";
 
 class UserService{
 
+    public async createAdmin(userInput: UserInput): Promise<UserDocument> {
+        try {
+            const userExist = await this.findByEmail(userInput.email);
+            if (userExist) 
+                throw new UserExistError("User already exists");
+    
+            userInput.password = await bcrypt.hash(userInput.password, 10);
+            userInput.role = "superadmin"; // Forzamos el rol superadmin
+            
+            const user = await UserModel.create(userInput);
+            return user;
+        } catch (error) {
+            console.error("Error in userService.createAdmin:", error);
+            throw error;
+        }
+    }
+    
     public async create(userInput: UserInput): Promise<UserDocument> {
         try {
             const userExist = await this.findByEmail(userInput.email);
             if (userExist) 
                 throw new UserExistError("User already exists");
     
-            if (userInput.role && userInput.role !== "superadmin") {
-                throw new NotAuthorizedError("You cannot set a role other than 'regular'");
+            if (userInput.role === "superadmin") {
+                throw new NotAuthorizedError("You cannot set role as superadmin directly");
             }
     
             userInput.password = await bcrypt.hash(userInput.password, 10);
