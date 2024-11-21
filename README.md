@@ -2,128 +2,188 @@
 
 **Juan Felipe Ramirez - A00382637**
 
-# Comentario API
+# API GraphQL de Comentarios
 
-Nuestra aplicacion permite gestionar usuarios y comentarios en una plataforma, incluyendo la creación, modificiacion, eliminación, y la capacidad de agregar o eliminar reacciones a los comentarios.
+Esta aplicación es una traducción de una API REST a GraphQL para gestionar usuarios y comentarios en una plataforma, incluyendo la creación, modificación, eliminación, y la capacidad de agregar o eliminar reacciones a los comentarios.
+
+## Configuración Inicial
+
+1. **Script de Superadmin**: 
+   - Se incluye un script `createFirstAdmin.ts` que crea el primer superadmin
+   - Ejecutar: `npx ts-node src/scripts/createFirstAdmin.ts`
+   - Credenciales por defecto:
+     ```
+     email: superadmin@admin.com
+     password: admin123
+     ```
+
+2. **Variables de Entorno**:
+   ```env
+   MONGO_URL=tu_url_mongodb
+   JWT_SECRET=tu_secret_key
+   PORT=8000
+   ```
 
 ## Requisitos
 
-Para utilizar esta API, se necesita tener un usuario con rol de **superadmin**. Aqui tienes un ejemplo(aunque en el archivo pruebas.json estan todas las posibilidades, se prueba con superadmin porque puede hacer todo, pero las restricciones se pueden probar con usuarios regulares) para iniciar sesión con el siguiente endpoint:
+Para utilizar esta API GraphQL, necesitas tener un usuario registrado. Aquí tienes las operaciones principales (las pruebas completas están en el archivo `GRAPHQL.postman_collection.json`):
 
-### Inicio de Sesión
+### Registro e Inicio de Sesión
 
-**POST** `/api/users/login`
+```graphql
+# Registro
+mutation Register {
+  register(
+    name: "Test User"
+    email: "test@test.com"
+    password: "password123"
+  ) {
+    id
+    name
+    email
+    role
+  }
+}
 
-**Request Body:**
-```json
-{
-    "email": "superadmin@example.com",
-    "password": "prueba1234567"
+# Inicio de Sesión
+mutation Login {
+  login(
+    email: "test@test.com"
+    password: "password123"
+  ) {
+    email
+    name
+    token
+  }
 }
 ```
 
-**Respuesta Exitosa:**
-```json
-{
-    "token(ejemplo)": "3VwZXJhbWluIiwiaWF0IjoxNjg4NjEyMzQ5LCJleHBpIjoxNjg4NjEyMzU5fQ.SNZX8U7o9RM6K3Mbxp8MCN9g4Hhw4b8G8-M8pADUHzU"
+El token recibido debe ser incluido en los headers de las siguientes operaciones como:
+```
+Authorization: Bearer <token>
+```
+
+## Operaciones Principales
+
+### Fragments Reutilizables
+```graphql
+fragment UserFields on User {
+  id
+  name
+  email
+  role
+  createdAt
+  updatedAt
+}
+
+fragment CommentFields on Comment {
+  id
+  content
+  userId
+  createdAt
+  reactions {
+    userId
+    type
+  }
 }
 ```
 
-Se guarda el token que recibe, ya que es necesario para autenticarte en los siguientes endpoints.
+### Gestión de Usuarios
 
-## Endpoints
+```graphql
+# Crear Admin (solo superadmin)
+mutation CreateAdmin {
+  createAdmin(
+    name: "New Admin"
+    email: "admin@test.com"
+    password: "admin456"
+  ) {
+    ...UserFields
+  }
+}
 
-### Crear Comentario
-
-**POST** `/api/comments/create`
-
-**Request Body:**
-```json
-{
-    "content": "Este es otro comentario de prueba user regular.",
-    "parentId": null
+# Obtener Usuarios
+query GetAllUsers {
+  users {
+    ...UserFields
+  }
 }
 ```
 
-**Respuesta Exitosa:**
-```
-{
-    "userId": "66d6296e8891334545332",
-    "content": "Este es otro comentario de prueba user regular.",
-    "parentId": null,
-    "replies": [],
-    "reactions": [],
-    "_id": "66d62be78af01345533",
-    "__v": 0
-}
-```
+### Gestión de Comentarios
 
-### Obtener Todos los Comentarios
-
-**GET** `/api/comments`
-
-**Respuesta Exitosa:**
-```
-{
-        "_id": "comentario_id",
-        "userId": "66d611d54345433e0613f",
-        "content": "Este es un comentario.",
-        "parentId": "66d624222329afffd961",
-        "replies": [],
-        "reactions": []
+```graphql
+# Crear Comentario
+mutation CreateComment {
+  createComment(
+    content: "Este es un comentario de prueba"
+    parentId: null
+  ) {
+    ...CommentFields
+    replies {
+      ...CommentFields
     }
-```
-
-### Obtener Comentario por ID
-
-**GET** `/api/comments/:id`
-
-**Respuesta Exitosa:**
-```
-{
-    "_id": "66d62323432344e8c0e",
-    "userId": "66d611d52343213f",
-    "content": "Este es otro comentario de prueba.",
-    "parentId": null,
-    "replies": [],
-    "reactions": [],
-    "__v": 0
+  }
 }
 ```
 
-### Actualizar Usuario
+## Notas Técnicas
 
-**PUT** `/api/user/:id`
+1. **GraphQL Playground**: La API incluye un playground accesible en `/graphql` para probar las operaciones interactivamente.
+2. **Autenticación**: Todas las operaciones (excepto registro y login) requieren autenticación mediante JWT.
+3. **Autorización**: Ciertas operaciones están restringidas según el rol del usuario:
+   - `superadmin`: Puede realizar todas las operaciones
+   - `user`: Limitado a operaciones sobre sus propios recursos
 
-**Request Body:**
+## Despliegue
+
+El proyecto está desplegado en Railway y está disponible en:
+[https://nodeapp-production.up.railway.app/graphql](https://nodeapp-production.up.railway.app/graphql)
+
+Puedes probar la API usando:
+1. El GraphQL Playground en la URL de despliegue
+2. Postman (colección incluida en el repositorio)
+3. Cualquier cliente GraphQL que soporte JWT en headers
+
+## Dificultades y Limitaciones
+
+1. **Migración a GraphQL**:
+   - La reestructuración del código para manejar resolvers y tipos fue compleja
+   - Implementación de fragments para optimizar queries requirió planificación adicional
+
+2. **Despliegue**:
+   - Inicialmente se intentó desplegar en Vercel pero hubo problemas con el manejo de GraphQL
+   - Se migró a Railway donde el despliegue fue más directo para aplicaciones GraphQL
+   - Los problemas con Vercel incluían:
+     - Dificultades con el manejo de rutas
+     - Problemas con el playground de GraphQL
+     - Incompatibilidades con el middleware de autenticación
+
+3. **Autenticación y Autorización**:
+   - El manejo de contexto en GraphQL para autenticación fue diferente al REST
+   - Implementar directivas de autorización personalizadas fue un reto
+
+4. **Fragments y Optimización**:
+   - La implementación de fragments requirió un enfoque diferente al pensado inicialmente
+   - Se tuvo que balancear entre reutilización de código y flexibilidad
+
+## Pruebas
+
+Las pruebas completas están disponibles en el archivo `GRAPHQL.postman_collection.json`. Para usarlas:
+1. Importa la colección en Postman
+2. Configura la variable de entorno `baseUrl`
+3. Ejecuta el login primero para obtener el token
+4. El token se guardará automáticamente para las siguientes requests
+
+## Estructura del Proyecto
+
 ```
-{
-  "name": "NuevoNombre2",
-  "email": "nuevoemail2@example.com",
-  "password": "nuevacontraseña2"
-}
-
+/src
+  /graphql
+    /resolvers      # Resolvers de GraphQL
+    /types         # Definiciones de tipos
+  /middleware     # Middleware de autenticación
+  /models        # Modelos de MongoDB
 ```
-
-**Respuesta con usuario no autorizado:**
-```
-{
-    "message": "Only superadmin can update users"
-}
-```
-
-Esas son algunas de las maneras en las que se puede probar.
-
-## Notas
-
-1. **Reacciones**: Para eliminar reacciones, usamos el tipo de datos `Mixed` en el esquema de mongoose para manejar la flexibilidad en los datos. Esto fue necesario porque teniamos problemas con la definición estricta del esquema para arreglos de objetos.
-2. **Autorización**: Los endpoints necesitan siempre estar logeado y que tenga el rol adecuado para realizar estas acciones.
-3. **pruebas.json**: En este archivo estan todas las pruebas en postman, lo unico que cambiaria seria el token, por lo que si o si se debe iniciar sesion como superadmin tal como se indica en el primer paso para poder seguir con todas las funcionalidades, el token puede que expire despues de un tiempo, se tiene que volver a iniciar sesion y cambiarlo.
 
 ---
-
-### Despliegue en Vercel
-
-El proyecto está desplegado en Vercel y está disponible en el siguiente enlace: [https://node-leh54q5cy-collins-projects-45b819a1.vercel.app](https://node-leh54q5cy-collins-projects-45b819a1.vercel.app). Debido a que el proyecto no incluye una interfaz de usuario (frontend) y está configurado solo para el backend, el enlace muestra el mensaje "Hello World". 
-
-Para verificar la funcionalidad del backend, puedes usar herramientas como Postman para interactuar con las rutas API descritas en este README.
