@@ -25,7 +25,6 @@ const startServer = async () => {
     app.use(express.json());
     app.use(cors());
     
-    // Ruta de prueba básica
     app.get('/', (req, res) => {
         res.send('GraphQL API is running. Use /graphql endpoint for queries.');
     });
@@ -36,12 +35,13 @@ const startServer = async () => {
         })
     }));
 
-    const PORT = process.env.PORT || 8000;
+    // Railway asignará el puerto automáticamente
+    const PORT = parseInt(process.env.PORT || '3000', 10);
 
     await db;
     
-    app.listen(PORT, () => {
-        console.log(`Server running on http://localhost:${PORT}/graphql`);
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`Server running on port ${PORT}`);
     });
 };
 
